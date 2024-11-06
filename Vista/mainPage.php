@@ -9,7 +9,18 @@
     <h1>PRODUCTOS</h1>
     <table style="border: 1px solid black;">
         <?php
-            
+            require_once "../Modelo/DAOProducto.php";
+            $DAOProducto = new DAOProducto();
+            $products = $DAOProducto->getAllProducts();
+            foreach ($products as $key => $product) {
+                print '<tr>';
+                    print '<td>'. $product->getId() .'</td>';
+                    print '<td>'. $product->getNombre() .'</td>';
+                    print '<td>'. $product->getDescripcion() .'</td>';
+                    print '<td>'. $product->getPrecio() .'</td>';
+                    print '<td>'. $product->getClienteId() .'</td>';
+                print '</tr>';
+            }
         ?>
     </table>
 </body>
