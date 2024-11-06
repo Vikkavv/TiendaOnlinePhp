@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form action="../Controlador/" method="post">
+<form action="../Controlador/controlPeticionesCliente.php" method="post">
     <fieldset>
             <br>
         <legend>Inicio de sesión</legend>
