@@ -14,8 +14,15 @@ class DB{
 
     public static function getConnection(){
         if(self::$conn === null){
-            self::$conn = new PDO("mysql:host=".self::$server.";dbname=".self::$dbName."", self::$user, self::$password);
+            try{
+                self::$conn = new PDO("mysql:host=".self::$server.";dbname=".self::$dbName."", self::$user, self::$password);
+                self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            }
+            catch(PDOException $e){
+                echo "Error de conexión: " . $e->getMessage();
+            }
         }
+        return self::$conn;
     }
 }
 
