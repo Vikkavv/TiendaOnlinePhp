@@ -12,7 +12,7 @@ session_name("registro");
 </head>
 <body>
 
-<form action="../Controlador/controlPeticionesUsuario.php" method="post">
+<form action="../Controlador/controlPeticionesCliente.php" method="post">
     <fieldset>
         <legend>Registro</legend>
             <br>
