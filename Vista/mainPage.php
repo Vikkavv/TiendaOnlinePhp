@@ -15,7 +15,7 @@
             foreach ($products as $key => $product) {
                 print '<tr>';
                     print '<td>'. $product->getId() .'</td>';
-                    print '<td>'. $product->getNombre() .'</td>';
+                    print '<td><a href="product.php?id='. $product->getId() .'">'. $product->getNombre() .'</a></td>';
                     print '<td>'. $product->getDescripcion() .'</td>';
                     print '<td>'. $product->getPrecio() .'</td>';
                     print '<td>'. $product->getClienteId() .'</td>';
@@ -23,5 +23,6 @@
             }
         ?>
     </table>
+    <a href="añadir-producto.php">Añadir producto</a>
 </body>
 </html>
