@@ -8,7 +8,7 @@ class DTOProducto{
     private $precio;
     private $cliente_id;
 
-    public function __construct( $nombre,  $descripcion,  $precio,  $cliente_id, $id = null){
+    public function __construct(String $nombre,  $descripcion,  $precio,  $cliente_id, $id = null){
         $this->id = $id;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;

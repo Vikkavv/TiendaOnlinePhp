@@ -16,10 +16,11 @@ class DAOProducto{
         $productInfo = $this->conn->query($sql);
         if($productInfo->rowCount() > 0){
             while ($row = $productInfo->fetch(PDO::FETCH_ASSOC)){
-                $product = new DTOProducto($row['id'], $row['nombre'],$row['descripcion'], $row['precio'], $row['cliente_id']);
+                $product = new DTOProducto($row['nombre'],$row['descripcion'], $row['precio'], $row['cliente_id'], $row['id']);
             }
+            return $product;
         }
-        return $product;
+        else return false;
     }
 
     public function getAllProducts(){
@@ -28,7 +29,7 @@ class DAOProducto{
         $select = $this->conn->query($sql);
         if($select->rowCount() > 0){
             while($row = $select->fetch(PDO::FETCH_ASSOC)){
-                $products[] = new DTOProducto($row['id'], $row['nombre'], $row['descripcion'], $row['precio'], $row['cliente_id']);
+                $products[] = new DTOProducto( $row['nombre'], $row['descripcion'], $row['precio'], $row['cliente_id'], $row['id']);
             }
         }
         return $products;
@@ -43,13 +44,4 @@ class DAOProducto{
         $stmt->bindParam(":cliente_id", $product->getClienteId());
         $stmt->execute();
     }    
-}
-
-$DAOProducto = new DAOProducto();
-
-if(isset($_POST['nombre'])){
-    $product = new DTOProducto($_POST['nombre'],$_POST['descripcion'],$_POST['precio'],$_POST['cliente_id']);
-    $DAOProducto->insertProduct($product);
-    header("Location: ../Vista/mainPage.php");
-    exit;
 }

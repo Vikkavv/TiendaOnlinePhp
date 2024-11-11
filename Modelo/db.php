@@ -1,5 +1,8 @@
 <?php
 
+session_name("tiendaOnline");
+session_start();
+
 class DB{
 
     private static $server = 'localhost:3306';
