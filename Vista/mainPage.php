@@ -23,6 +23,6 @@
             }
         ?>
     </table>
-    <a href="añadir-producto.php">Añadir producto</a>
+    <a href="insertProduct.php">Añadir producto</a>
 </body>
 </html>
