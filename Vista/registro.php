@@ -31,7 +31,7 @@ session_name("registro");
         <input type="text" name="nickname" id="nickname" required>
         <?php
             if (isset($_SESSION["mensajeNickname"])) {
-                echo $_GET["mensajeNickname"];
+                echo $_SESSION["mensajeNickname"];
             }
         ?>
             <br><br>
@@ -39,7 +39,7 @@ session_name("registro");
         <input type="text" name="password" id="password" minlength="5" required>
         <?php
         if (isset($_SESSION["mensajePassword"])) {
-            echo $_GET["mensajePassword"];
+            echo $_SESSION["mensajePassword"];
         }
         ?>
             <br><br>

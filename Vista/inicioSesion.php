@@ -1,4 +1,6 @@
 <?php
+session_start();
+session_name("inicioSesion")
 ?>
 
 <!DOCTYPE html>
@@ -20,15 +22,17 @@
         <?php
             if (isset($_SESSION["mensajeNickname"])) {
                 echo $_SESSION["mensajeNickname"];
+                unset($_SESSION["mensajeNickname"]);
             }
         ?>
-            <br><br>
+        <br><br>
         <label for="password">Contraseña:</label>
         <input type="text" name="password" id="password" minlength="5" required>
         <?php
-        if (isset($_SESSION["mensajePassword"])) {
-            echo $_SESSION["mensajePassword"];
-        }
+            if (isset($_SESSION["mensajePassword"])) {
+                echo $_SESSION["mensajePassword"];
+                unset($_SESSION["mensajePassword"]);
+            }
         ?>
             <br><br>
         <input type="submit" name="enviaInicio">
