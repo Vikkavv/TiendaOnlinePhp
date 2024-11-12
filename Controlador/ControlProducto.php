@@ -11,14 +11,14 @@ class ControlProducto{
 
     public function checkProductFields(DTOProducto $producto){
         $return = true;
-        $vName = "/^[A-Za-z0-9]{5,}(( ){1}([A-Za-z0-9]*)?)*(.)?$/";
+        $vName = "/^[A-Za-z0-9]+(( ){1}([A-Za-z0-9]*)?)*(.)?$/";
         if($producto->getId() != null){
             if(!$this->DAOProducto->getProductByID($producto->getId())){
                 $_SESSION['IdNotExists'] = true;
                 $return = false;
             }
         }
-        if(preg_match_all($vName, $producto->getNombre())){
+        if(preg_match_all($vName, $producto->getNombre()) && strlen($producto->getNombre()) > 4){
             if($this->DAOProducto->getProductByName($producto->getNombre()) != null && $producto->getId() == null){
                 $_SESSION['NameAE'] = true;
                 $return = false;
