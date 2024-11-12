@@ -23,7 +23,7 @@
                 print '<label name="nombre" class="alert">'.$alert.'</label><br>';
             }
         ?>
-        <input type="text" name="nombre" required><br>
+        <input type="text" name="nombre"><br>
         <label for="descripcion">Descripcion del producto: </label><br>
         <input type="text" name="descripcion"required><br>
         <label for="precio">Precio del producto: </label><br>

@@ -17,12 +17,13 @@
                     print '<td>'. $product->getId() .'</td>';
                     print '<td><a href="product.php?id='. $product->getId() .'">'. $product->getNombre() .'</a></td>';
                     print '<td>'. $product->getDescripcion() .'</td>';
-                    print '<td>'. $product->getPrecio() .'</td>';
+                    print '<td>'. $product->getPrecio() .'€</td>';
                     print '<td>'. $product->getClienteId() .'</td>';
                 print '</tr>';
             }
         ?>
     </table>
     <a href="insertProduct.php">Añadir producto</a>
+    <a href="updateProduct.php">Actualizar un producto</a>
 </body>
 </html>
