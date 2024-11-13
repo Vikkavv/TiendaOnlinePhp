@@ -16,20 +16,39 @@
     <?php
         if (isset($_SESSION['mensajeEditaCliente'])) {
             echo $_SESSION['mensajeEditaCliente'];
+            unset($_SESSION['mensajeEditaCliente']);
         }
     ?>
     <br><br>
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" id="nombre">
+    <?php
+    if (isset($_SESSION['mensajeNombre'])) {
+        echo $_SESSION['mensajeNombre'];
+        unset($_SESSION['mensajeNombre']);
+    }
+    ?>
     <br><br>
     <label for="apellido">Apellido:</label>
     <input type="text" name="apellido" id="apellido">
     <br><br>
     <label for="nickname">Apodo:</label>
     <input type="text" name="nickname" id="nickname">
+    <?php
+    if (isset($_SESSION['mensajeNickname'])) {
+        echo $_SESSION['mensajeNickname'];
+        unset($_SESSION['mensajeNickname']);
+    }
+    ?>
     <br><br>
     <label for="password">Contraseña:</label>
     <input type="text" name="password" id="password" minlength="5">
+    <?php
+    if (isset($_SESSION['mensajePassword'])) {
+        echo $_SESSION['mensajePassword'];
+        unset($_SESSION['mensajePassword']);
+    }
+    ?>
     <br><br>
     <label for="telefono">Teléfono:</label>
     <input type="text" name="telefono" id="telefono">

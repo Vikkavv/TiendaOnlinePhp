@@ -13,10 +13,16 @@
     <form action="../Controlador/controlPeticionesCliente.php" method="post">
         <label for="id">Indica el id del cliente a eliminar</label>
         <br><br>
-        <input type="text" id="id" name="id" required>
+        <input type="text" id="id" name="id">
         <?php
-            if (isset($_SESSION['mensajeCliente'])) {
-                echo $_SESSION['mensajeCliente'];
+            if (isset($_SESSION['mensajeEliminaCliente'])) {
+                echo $_SESSION['mensajeEliminaCliente'];
+                unset($_SESSION['mensajeEliminaCliente']);
+            }
+
+            if (isset($_SESSION['idVacio'])) {
+                echo $_SESSION['idVacio'];
+                unset($_SESSION['idVacio']);
             }
         ?>
         <br><br>
