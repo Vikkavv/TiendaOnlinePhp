@@ -1,12 +1,15 @@
 <?php
 
 require_once "../Modelo/DAOProducto.php";
+require_once "ControlSubida.php";
 
 class ControlProducto{
     private $DAOProducto;
+    private $controlSubida;
 
     public function __construct(){
         $this->DAOProducto = new DAOProducto();
+        $this->controlSubida = new ControlSubida();
     }
 
     public function checkProductFields(DTOProducto $producto){
@@ -19,14 +22,24 @@ class ControlProducto{
             }
         }
         if(preg_match_all($vName, $producto->getNombre()) && strlen($producto->getNombre()) > 4){
-            if($this->DAOProducto->getProductByName($producto->getNombre()) != null && $producto->getId() == null){
-                $_SESSION['NameAE'] = true;
-                $return = false;
+            $NonUniqueName = false;
+            $products = $this->DAOProducto->getAllProducts();
+            foreach ($products as $key => $item) {
+                if(($producto->getNombre() == $item->getNombre()) && ($producto->getId() != $item->getId())){
+                    $NonUniqueName = true;
+                }
+            }
+
+            if($producto->getNombre() != $this->DAOProducto->getProductByID($producto->getId())){
+                if($this->DAOProducto->getProductByName($producto->getNombre()) != null && $NonUniqueName){
+                    $_SESSION['NameAE'] = true;
+                    $return = false;
+                }
             }
         }
         else{
             $_SESSION['NameNotValid'] = true;
-            $return = false;   
+            $return = false;
         }
         if($producto->getPrecio() < 0){
             if(is_numeric($producto->getPrecio())){
@@ -34,8 +47,21 @@ class ControlProducto{
                 $return = false;
             }
         }
-        if($return && $producto->getId() == null) $this->DAOProducto->insertProduct($producto);
-        elseif($return && $producto->getId() != null) $this->DAOProducto->updateProduct($producto);
+        if($return && $producto->getId() == null){
+            $ruta = $this->controlSubida->proceso();
+            $producto->setRuta($ruta);
+            $this->DAOProducto->insertProduct($producto);
+        } 
+        elseif($return && $producto->getId() != null){
+            if($producto->getRuta() == "empty"){
+                $producto->setRuta($this->DAOProducto->getProductByID($producto->getId())->getRuta());
+            }else{
+                $ruta = $this->controlSubida->proceso();
+                if($ruta == '-1') $ruta = $this->controlSubida->getRutaCompleta();
+                $producto->setRuta($ruta);
+            }
+            $this->DAOProducto->updateProduct($producto);
+        }
         return $return;
     }
 

@@ -18,7 +18,7 @@ if(isset($_POST['insert'])){
 
 if(isset($_POST['update'])){
     $realProduct = $controlProducto->getDAOProducto()->getProductByID($_POST['id']);
-    $product = new DTOProducto($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['cliente_id'], $_POST['id']);
+    $product = new DTOProducto($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['cliente_id'], id: $_POST['id']);
     
     if($realProduct != false){
         if(empty($_POST['nombre'])){
@@ -32,6 +32,9 @@ if(isset($_POST['update'])){
         }
         if(empty($_POST['cliente_id'])){
             $product->setClienteId($realProduct->getClienteId());
+        }
+        if(empty($_FILES['ficheroSubida']['name'])){
+            $product->setRuta("empty");
         }
     }
     
