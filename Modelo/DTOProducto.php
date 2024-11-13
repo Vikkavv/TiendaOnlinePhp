@@ -7,13 +7,14 @@ class DTOProducto{
     private $descripcion;
     private $precio;
     private $cliente_id;
-
-    public function __construct(String $nombre,  $descripcion,  $precio,  $cliente_id, $id = null){
+    private $ruta;
+    public function __construct(String $nombre,  $descripcion,  $precio,  $cliente_id, $ruta = null,$id = null){
         $this->id = $id;
         $this->nombre = $nombre;
         $this->descripcion = $descripcion;
         $this->precio = $precio;
         $this->cliente_id = $cliente_id;
+        $this->ruta = $ruta;
     }
 
     public function getId(){
@@ -36,6 +37,10 @@ class DTOProducto{
         return $this->cliente_id;
     }
 
+    public function getRuta(){
+        return $this->ruta;
+    }
+
     public function setId($id): void{
         $this->id = $id;
     }
@@ -54,5 +59,9 @@ class DTOProducto{
 
     public function setClienteId($cliente_id): void{
         $this->cliente_id = $cliente_id;
+    }
+
+    public function setRuta($ruta){
+        $this->ruta = $ruta;
     }
 }
