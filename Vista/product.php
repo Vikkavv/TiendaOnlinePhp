@@ -13,6 +13,7 @@
 </head>
 <body>
     <?php
+        print '<img src="'.$product->getRuta().'">';
         print "<p>".$product->getNombre()."</p>";
         print "<p>".$product->getDescripcion()."</p>";
         print "<p>".$product->getPrecio()."€</p>";
