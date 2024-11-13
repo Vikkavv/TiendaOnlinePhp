@@ -9,7 +9,7 @@
     include_once "../Modelo/db.php";
 ?>
 <body>
-    <form action="../Controlador/controlPeticionesProducto.php" method="post">
+    <form action="../Controlador/controlPeticionesProducto.php" method="post" enctype="multipart/form-data">
         <label for="id">Id del producto a modificar: </label><br>
         <?php
             $alert = '';
@@ -35,8 +35,10 @@
                 unset($_SESSION['NameNotValid']);
                 print '<label name="nombre" class="alert">'.$alert.'</label><br>';
             }
-            if(isset($_SESSION['NameAE'])){
+            elseif(isset($_SESSION['NameAE'])){
+                $alert = "El nombre del producto ya existe, debe de ser único.";
                 unset($_SESSION['NameAE']);
+                print '<label name="nombre" class="alert">'.$alert.'</label><br>';
             }
         ?>
         <input type="text" name="nombre"><br>
@@ -51,6 +53,8 @@
             }
         ?>
         <input type="text" name="precio" value=""><br>
+        <label for="foto">Foto de producto</label><br>
+        <input type="file" name="ficheroSubida" id="ficheroSubida"><br>
         <label for="cliente_id">Cliente_id del producto: </label><br>
         <input type="text" name="cliente_id"><br><br>
         <input type="submit" name="update" value="Actualizar producto">

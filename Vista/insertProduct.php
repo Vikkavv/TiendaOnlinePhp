@@ -9,7 +9,7 @@
     include "../Modelo/db.php";
 ?>
 <body>
-    <form action="../Controlador/controlPeticionesProducto.php" method="post">
+    <form action="../Controlador/controlPeticionesProducto.php" method="post" enctype="multipart/form-data">
         <label for="nombre">Nombre del producto: </label><br>
         <?php
             $alert = '';
@@ -35,6 +35,8 @@
             }
         ?>
         <input type="text" name="precio" required><br>
+        <label for="foto">Foto de producto</label><br>
+        <input type="file" name="ficheroSubida" id="ficheroSubida"><br>
         <label for="cliente_id">Cliente_id del producto: </label><br>
         <input type="text" name="cliente_id" required><br>
         <input type="submit" name="insert" value="Crear producto">
