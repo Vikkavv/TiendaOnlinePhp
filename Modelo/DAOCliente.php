@@ -1,6 +1,7 @@
 <?php
-require_once 'db.php';
+
 require_once "DTOCliente.php";
+require_once 'db.php';
 
 class DAOCliente{
     private $conn;
@@ -12,7 +13,7 @@ class DAOCliente{
     public function selectCliente($id){
         $cliente = null;
 
-        $stmt = $this->conn->prepare("SELECT * FROM cliente WHERE id = :id");
+        $stmt = $this->conn->prepare("SELECT * FROM Cliente WHERE id = :id");
         $stmt->bindParam(":id", $id);
         $stmt->execute();
 
@@ -25,6 +26,15 @@ class DAOCliente{
             //codificar un header que lleve a una pagina
             $mensajeId = "La id especificada no existe";
             print $mensajeId;
+        }
+        return $cliente;
+    }
+
+    public function selectByNickname($nickname){
+        $cliente = null;
+        $clientes = $this->selectAll();
+        foreach ($clientes as $item) {
+            if($item->getNickname() == $nickname) $cliente = $item;
         }
         return $cliente;
     }
@@ -50,7 +60,7 @@ class DAOCliente{
         $telefono = $DTOCliente->getTelefono();
         $domicilio = $DTOCliente->getDomicilio();
 
-        $stmt = $this->conn->prepare("INSERT INTO cliente (nombre, apellido, nickname, password, telefono, domicilio)
+        $stmt = $this->conn->prepare("INSERT INTO Cliente (nombre, apellido, nickname, password, telefono, domicilio)
                                       VALUES (:nombre, :apellido, :nickname, :password, :telefono, :domicilio)");
             $stmt->bindParam(":nombre", $nombre);
             $stmt->bindParam(":apellido", $apellido);
@@ -96,7 +106,7 @@ class DAOCliente{
 
             if (validaNombreModificar($nombre) && validaNicknameModificar($nickname) && validaPasswordModificar($password)
                 && validaPasswordModificar($password)){
-                $stmt = $this->conn->prepare("UPDATE cliente SET nombre = :nombre, apellido = :apellido, 
+                $stmt = $this->conn->prepare("UPDATE Cliente SET nombre = :nombre, apellido = :apellido, 
                 nickname = :nickname, password = :password, telefono = :telefono, domicilio = :domicilio WHERE id = :id");
                 $stmt->bindParam(":nombre", $nombre);
                 $stmt->bindParam(":apellido", $apellido);
@@ -137,7 +147,7 @@ class DAOCliente{
         $cliente = $this->selectCliente($id);
 
         if ($cliente){
-            $stmt = $this->conn->prepare("DELETE FROM cliente WHERE id = :id");
+            $stmt = $this->conn->prepare("DELETE FROM Cliente WHERE id = :id");
             $stmt->bindParam(":id", $id);
             $stmt->execute();
 
@@ -167,7 +177,7 @@ class DAOCliente{
         }
 
         if ($existeCliente) {
-            header("Location:../Vista/menu.php");
+            header("Location:../Vista/gestionCliente.php");
             exit();
         }
         else{

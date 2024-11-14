@@ -1,7 +1,7 @@
 <?php
 
-require_once "db.php";
 require_once "DTOProducto.php";
+require_once "db.php";
 
 class DAOProducto{
     private $conn;
