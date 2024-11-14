@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "../Modelo/DAOCliente.php";
 
 $DAOCliente = new DAOCliente();
@@ -25,30 +24,31 @@ $arrayClientes = $DAOCliente->selectAll();
     <table>
         <caption><strong>Base de datos de clientes</strong></caption>
         <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Nickname</th>
             <th>Password</th>
             <th>Telefono</th>
             <th>Domicilio</th>
-            <th>ID</th>
+            
         </tr>
         <?php
             foreach ($arrayClientes as $cliente) {
                 print "<tr>";
+                    print "<td>" .$cliente->getId(). "</td>";
                     print "<td>" .$cliente->getNombre(). "</td>";
                     print "<td>" .$cliente->getApellido(). "</td>";
                     print "<td>" .$cliente->getNickname(). "</td>";
                     print "<td>" .$cliente->getPassword(). "</td>";
                     print "<td>" .$cliente->getTelefono(). "</td>";
                     print "<td>" .$cliente->getDomicilio(). "</td>";
-                    print "<td>" .$cliente->getId(). "</td>";
                 print "</tr>";
             }
         ?>
     </table>
 
-    <p>¿Quieres volver al menú? Pincha <a href="menu.php">aquí</a>.</p>
+    <p>¿Quieres volver al menú? Pincha <a href="gestionCliente.php">aquí</a>.</p>
 </body>
 </html>
 

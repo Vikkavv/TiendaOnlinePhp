@@ -1,5 +1,5 @@
 <?php
-session_start();
+    require_once "../Modelo/db.php";
 ?>
 
 <!DOCTYPE html>
