@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once "../Modelo/db.php";
 
 function validaDatosRegistro($nombre, $apellido, $nickname, $password, $telefono, $domicilio){
     $validaNombre = "/\w{4,}/";
@@ -42,8 +42,9 @@ function validaDatosRegistro($nombre, $apellido, $nickname, $password, $telefono
         }
 
         $_SESSION["nickname"] = $cliente->getNickname();
+        $_SESSION["cliente"] = $cliente;
 
-        header("Location:../Vista/menu.php");
+        header("Location:../Vista/gestionCliente.php");
         exit();
     }
     else {
@@ -76,7 +77,9 @@ function validaDatosInicioSesion($nickname, $password){
     }
 
     if ($nicknameCorrecto && $passwordCorrecto) {
+        $DAOCliente = new DAOCliente();
         $_SESSION["nickname"] = $_POST['nickname'];
+        $_SESSION["cliente"] = $DAOCliente->selectByNickname($_POST['nickname']);
 
         $DAOCliente = new DAOCliente();
         $DAOCliente->compruebaClienteEnBD($nickname, $password);
