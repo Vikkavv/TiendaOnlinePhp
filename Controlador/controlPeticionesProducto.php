@@ -9,7 +9,7 @@ if(isset($_POST['insert'])){
 
     $location = "";
     if($controlProducto->checkProductFields($product)){
-        $location = "../Vista/mainPage.php";
+        $location = "../Vista/gestionProducto.php";
     }else $location = "../Vista/insertProduct.php";
 
     header("Location: $location");
@@ -40,7 +40,7 @@ if(isset($_POST['update'])){
     
     $location = "";
     if($controlProducto->checkProductFields($product)){
-        $location = "../Vista/mainPage.php";
+        $location = "../Vista/gestionProducto.php";
     }else $location = "../Vista/updateProduct.php";
 
     header("Location: $location");
