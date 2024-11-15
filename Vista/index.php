@@ -29,7 +29,9 @@
         <div>
             <a href="inicioSesion.php">Iniciar Sesión</a>
             <a href="registro.php">Registrarse</a>
-            <a href="trastienda.php">Trastienda</a>
+            <?php
+                print '<a class="'.$class.'" href="trastienda.php">Trastienda</a>';
+            ?>
             <a href="carrito.php"><img src="Assets/img/carrito.png" alt="icono carrito de la compra"></a>
         </div>
     </nav>
