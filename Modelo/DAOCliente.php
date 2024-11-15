@@ -40,7 +40,7 @@ class DAOCliente{
     }
 
     public function selectAll(){
-        $sql = "SELECT * FROM cliente";
+        $sql = "SELECT * FROM Cliente";
         $resultado = $this->conn->query($sql);
         $clientes = [];
 
@@ -164,7 +164,7 @@ class DAOCliente{
 
     function compruebaClienteEnBD($nickname, $password){
         $existeCliente = false;
-        $sql = "SELECT * FROM cliente";
+        $sql = "SELECT * FROM Cliente";
         $resultado = $this->conn->query($sql);
 
         if ($resultado->rowCount() > 0) {
@@ -177,7 +177,7 @@ class DAOCliente{
         }
 
         if ($existeCliente) {
-            header("Location:../Vista/gestionCliente.php");
+            header("Location:../Vista/index.php");
             exit();
         }
         else{
@@ -190,7 +190,7 @@ class DAOCliente{
 
     function aniadeSiNoExisteCliente($nickname){
         $existeCliente = false;
-        $sql = "SELECT * FROM cliente";
+        $sql = "SELECT * FROM Cliente";
         $resultado = $this->conn->query($sql);
 
         if ($resultado->rowCount() > 0) {
