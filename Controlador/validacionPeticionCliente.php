@@ -79,7 +79,6 @@ function validaDatosInicioSesion($nickname, $password){
     if ($nicknameCorrecto && $passwordCorrecto) {
         $DAOCliente = new DAOCliente();
         $_SESSION["nickname"] = $_POST['nickname'];
-        $_SESSION["cliente"] = $DAOCliente->selectByNickname($_POST['nickname']);
 
         $DAOCliente = new DAOCliente();
         $DAOCliente->compruebaClienteEnBD($nickname, $password);
