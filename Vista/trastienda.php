@@ -12,6 +12,8 @@
             <?php
                 require_once "../Modelo/DTOCliente.php";
                 require_once "../Modelo/db.php";
+                app_security();
+
                 $class = "hidden";
                 $nombre = "";
                 $apellido = "";
@@ -32,12 +34,12 @@
         </div>
     </nav>
     <div class="container grid-2">
-    <a href="gestionCliente.php" class="card">
-        <p class="xxl">Gestionar Clientes</p>
-    </a>
-    <a href="gestionProducto.php" class="card">
-        <p class="xxl">Gestionar Productos</p>
-    </a>
+        <a href="gestionCliente.php" class="card">
+            <p class="xxl">Gestionar Clientes</p>
+        </a>
+        <a href="gestionProducto.php" class="card">
+            <p class="xxl">Gestionar Productos</p>
+        </a>
     </div>
 </body>
 </html>
