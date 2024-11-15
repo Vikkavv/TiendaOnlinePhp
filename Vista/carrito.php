@@ -68,6 +68,12 @@ function mostrarCarrito(){
                     }
                 }
 
+                if(isset($_GET["b"])){
+                    unset($_SESSION['carrito']);
+                    header("Location: carrito.php");
+                    exit;
+                }
+
                 if (isset($_GET["id"])) {
                     $DAOProducto  = new DAOProducto();
                     $_SESSION["carrito"][] = $DAOProducto->getProductByID($_GET["id"]);
@@ -85,6 +91,13 @@ function mostrarCarrito(){
                 }
             ?>
             </div>
+            <?php
+                if(isset($_SESSION['carrito'])){
+                    if(count($_SESSION['carrito']) > 1){
+                        print '<p class="center" style="margin: 0;"><a class="btn red" href="carrito.php?b=true">Borrar todos los productos</a></p>';
+                    }
+                }
+            ?>
         </div>
     </div>
     <footer class="footer">
