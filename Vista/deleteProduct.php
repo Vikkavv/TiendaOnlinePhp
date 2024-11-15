@@ -8,5 +8,5 @@ if(isset($_GET['id'])){
     $_SESSION['delSuccess'] = $_GET['id'];
 }
 
-header("Location: mainPage.php");
+header("Location: show-DelProducts.php");
 exit;
