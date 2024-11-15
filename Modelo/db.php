@@ -3,6 +3,14 @@
 session_name("tiendaOnline");
 session_start();
 
+function app_security($url = null) {
+    if(!isset($_SESSION['cliente'])){
+        if($url == null) $url = "index.php";
+        header("Location: ../Vista/".$url);
+        exit;
+    }
+}
+
 class DB{
 
     private static $server = 'localhost:3306';
