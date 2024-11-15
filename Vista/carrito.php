@@ -53,6 +53,9 @@ function mostrarCarrito(){
             if (isset($_GET["id"])) {
                 $DAOProducto  = new DAOProducto();
                 $_SESSION["carrito"][] = $DAOProducto->getProductByID($_GET["id"]);
+
+                header("location:index.php");
+                exit();
             }
             else{
                 if (count($_SESSION["carrito"]) > 0){

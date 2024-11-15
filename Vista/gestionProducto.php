@@ -35,9 +35,12 @@
         </div>
     </nav>
     <h1 class="center xxl">PRODUCTOS</h1>
-    <div class="container grid-2">
+    <div class="container grid-3">
         <a href="insertProduct.php" class="card">
             <p class="xxl">Crear Producto</p>
+        </a>
+        <a class="card" href="updateProduct.php">
+            <p class="xxl">Actualizar producto</p>
         </a>
         <a href="show-DelProducts.php" class="card">
             <p class="xxl">Mostrar y borrar productos</p>
