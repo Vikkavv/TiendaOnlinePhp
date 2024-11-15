@@ -177,6 +177,7 @@ class DAOCliente{
         }
 
         if ($existeCliente) {
+            $_SESSION["cliente"] = $this->selectByNickname($_POST['nickname']);
             header("Location:../Vista/index.php");
             exit();
         }
