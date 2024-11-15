@@ -50,23 +50,34 @@ class DAOProducto{
 
 
     public function insertProduct($product){
+        $nombre = $product->getNombre();
+        $descripcion = $product->getDescripcion();
+        $precio = $product->getPrecio();
+        $cliente_id = $product->getClienteId(); 
+        $ruta = $product->getRuta();
         $stmt = $this->conn->prepare("insert into Producto (nombre, descripcion, precio, cliente_id, fotoRuta) values (:nombre, :descripcion, :precio, :cliente_id, :fotoRuta)");
-        $stmt->bindParam(":nombre", $product->getNombre());
-        $stmt->bindParam(":descripcion", $product->getDescripcion());
-        $stmt->bindParam(":precio", $product->getPrecio());
-        $stmt->bindParam(":cliente_id", $product->getClienteId());
-        $stmt->bindParam(":fotoRuta", $product->getRuta());
+        $stmt->bindParam(":nombre", $nombre);
+        $stmt->bindParam(":descripcion", $descripcion);
+        $stmt->bindParam(":precio", $precio);
+        $stmt->bindParam(":cliente_id", $cliente_id);
+        $stmt->bindParam(":fotoRuta", $ruta);
         return $stmt->execute();
     }
 
     public function updateProduct($product){
+        $id = $product->getId();
+        $nombre = $product->getNombre();
+        $descripcion = $product->getDescripcion();
+        $precio = $product->getPrecio();
+        $cliente_id = $product->getClienteId(); 
+        $ruta = $product->getRuta();
         $stmt = $this->conn->prepare("update Producto set nombre = :nombre, descripcion = :descripcion, precio = :precio, cliente_id = :cliente_id, fotoRuta = :fotoRuta where id = :id");
-        $stmt->bindParam(":nombre", $product->getNombre());
-        $stmt->bindParam(":descripcion", $product->getDescripcion());
-        $stmt->bindParam(":precio", $product->getPrecio());
-        $stmt->bindParam(":cliente_id", $product->getClienteId());
-        $stmt->bindParam(":id", $product->getId());
-        $stmt->bindParam(":fotoRuta", $product->getRuta());
+        $stmt->bindParam(":nombre", $nombre);
+        $stmt->bindParam(":descripcion", $descripcion);
+        $stmt->bindParam(":precio", $precio);
+        $stmt->bindParam(":cliente_id", $cliente_id);
+        $stmt->bindParam(":id", $id);
+        $stmt->bindParam(":fotoRuta", $ruta);
         return $stmt->execute();
     }
 
