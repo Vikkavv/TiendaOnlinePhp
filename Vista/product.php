@@ -53,7 +53,7 @@
                         <p>'.$product->getDescripcion().'</p>
                         <p>'.$product->getPrecio().'€</p>
                         <p style="color: #b8b8b8;" >'.$tipo.'</p>
-                        <a class="btn" style="margin: 0;" href="carrito-php?id='.$product->getId().'">Añadir al carrito</a>
+                        <a class="btn" style="margin: 0;" href="carrito.php?id='.$product->getId().'">Añadir al carrito</a>
                     </div>
                 </div>
                 ';

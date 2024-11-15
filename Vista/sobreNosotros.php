@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="Assets/styles.css" />
 </head>
 
-<body>
+<body class="vFlex" style="overflow-x: hidden;">
     <div class="containerNosotros">
         <div>
             <nav>
@@ -27,12 +27,13 @@
 
                 </div>
                 <div>
+                    <a href="index.php">Página Principal</a>
                     <a href="inicioSesion.php">Iniciar Sesión</a>
                     <a href="registro.php">Registrarse</a>
                     <?php
                     print '<a class="' . $class . '" href="trastienda.php">Trastienda</a>';
                     ?>
-                    <a href="carrito.php"><img src="Assets/img/carrito.png" alt="icono carrito de la compra"></a>
+                    <img src="">
                 </div>
             </nav>
             <h1 class="xxl center marginTop">¿Quienes somos?</h1>
@@ -70,7 +71,7 @@
         </div>
     </div>
 
-    <div class="footer">
+    <footer class="footer">
         <div>
             <h3>Información de contacto</h3>
             <ul>
@@ -103,7 +104,7 @@
                 <li class="hidden">a</li>
             </ul>
         </div>
-    </div>
+    </footer>
 </body>
 
 </html>
