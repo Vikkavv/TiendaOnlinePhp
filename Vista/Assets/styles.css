@@ -63,8 +63,25 @@ nav p{
     grid-template-columns: repeat(2, 1fr);
 }
 
+.grid-3{
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .grid-2 .xxl{
     font-size: 57px;
+}
+
+.grid-3 .xxl{
+    font-size: 38px;
+}
+
+.xxl{
+    font-size: 100px;
+}
+
+.center{
+    margin: 0;
+    text-align: center;
 }
 
 .card{
@@ -114,4 +131,92 @@ nav p{
 
 p.card-type{
     color: #c9c9c9;
+}
+
+.table{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.table td{
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.container-login,
+.container-edita,
+.container-elimina,
+.container-aniadeP,
+.container-actualizaP {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-login,
+.card-edita,
+.card-elimina,
+.card-aniadeP,
+.card-actualizaP {
+    width: fit-content;
+    background-color: #111111;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 20px 40px 20px 40px;
+    color: white;
+    transition: 500ms ease;
+}
+
+.card-login:hover,
+.card-edita:hover,
+.card-elimina:hover,
+.card-aniadeP:hover,
+.card-actualizaP:hover {
+    box-shadow: 8px 8px #1573b1bb;
+    transition: 500ms ease;
+}
+
+.card-login input,
+.card-edita input,
+.card-elimina input,
+.card-aniadeP input,
+.card-actualizaP input {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.card-login form,
+.card-edita,
+.card-elimina,
+.card-aniadeP,
+.card-actualizaP {
+    justify-items: center;
+}
+
+.card-login p {
+    margin-top: 0;
+}
+
+.card-login a {
+    text-decoration: none;
+    color: white;
+    transition: 500ms ease;
+}
+
+.card-login a:hover {
+    color: #1573b1;
+    transition: 500ms ease;
+}
+
+.titulo {
+    font-size: 1.8em;
+}
+
+.crearCuenta,
+.existeCuenta {
+    padding-top: 30px;
+    font-size: 0.9em;
 }
